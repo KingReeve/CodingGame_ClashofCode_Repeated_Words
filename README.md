@@ -1,5 +1,5 @@
-# CodingGame_Clash_Submission
-I submitted a problem to codingame, but it might need to be made simpler, so I want to record it here.
+# CodingGame Clash Submission
+I submitted a problem to codingame, but it might need to be made simpler, so I want to record the original here. Making it simpler kind of defeats the puzzle, I think, but maybe it is too difficult for a clash.
 
 
 
