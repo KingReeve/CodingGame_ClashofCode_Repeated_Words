@@ -8,30 +8,36 @@ Goal
 When proofreading, some people have a hard time time seeing repeats, especially if they're broken up onto different lines. The brain just ignores them.
 
 Print all of the repeated words found in a string, one on each line, to help find such words when editing text.
+If there are multiple matching words in a row, print only the first one.
 
-Words are separated by spaces or line breaks.
-Ignore capitalization when comparing words.
-Ignore non-alphabetical characters at the start or end of a word.
-Special characters between words counts as separating them, so those words should not be considered repeats.
-When outputting a repeated pair, print the first word exactly as it originally appears.
-Print each repeated word on its own line, in the order found.
+1) Only one input string is provided.
+2) Words are separated by spaces or line breaks {{\n}}.
+3) Ignore capitalization when comparing words.
+4) Words that contain non-alphabetic characters will count them as part of the word. E.g. "it's" is equivalent to "it's"
+5) Ignore non-alphabetical characters at the beginning of a repeat group, or the end of the repeat group. E.g. "!repeat repeat repeat!" should output "repeat"
+6) Do not ignore non-alphabetical characters inside of a repeat group. E.g. "hi! hi!" is not a repeat as it produces "hi!" and "hi" from rule 5.
+7) When outputting a repeat group, print the first word exactly as it originally appears minus any non-alphabetical characters at the beginning.
+8) Print each repeated word on its own line, in the order found.
 
 Example:
 Input:
-text Text text
+Example example text Text text a , a!a. a ,a ,b b,
 
 Output:
+Example
 text
-Text
+b
 
 Reasoning:
-the first pair of repeats is "text Text" so output "text".
-The second pair of repeats is "Text text" so output "Text".
+The first group of repeated words starts with "Example".
+The second group of similar words starts with "text".
+The third group is separated by special characters so isn't included. E.g. "a" != "," != "a!a." != "a" != ",a"
+The fourth group of ",b b," can be considered a repeat as there are non-alphabetical characters surrounding it, but none in-between.
 
 If there are no repeats, just write {{No repeats!}}.
 
 Input
-A string to check for duplicates.
+A single string to check for duplicates.
 
 Output
 Each repeated word on individual lines.
@@ -39,8 +45,11 @@ Or {{No repeats!}} if there aren't repeated words.
 
 Constraints
 Input string will only contain ASCII characters.
-Valid repeated words won't be separated by both punctuation and whitespace. e.g. "??a a??a" will not appear
-Non-separating special characters won't contain alphabetical characters. e.g. "!@#JK#$%hi hi!!e!" will not appear
+
+Words should only be considered when separated by spaces or '\n'. Any non-alphabetical characters should be considered part of the word except for the specific exception of non-alphabetical characters before the first word and after the last word.
+
+Words that contain special characters but which should count as repeats (special characters before the first word or after the last word) won't contain alphabetical characters between special characters.
+e.g. neither "@n@hi hi@n@" nor "@it's it's@" will appear.
 
 Example:
 Input:
